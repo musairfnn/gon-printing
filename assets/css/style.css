@@ -1,0 +1,99 @@
+:root {
+    --ink: #0b1b3a;
+    --ink-2: #14285c;
+    --blue: #2563eb;
+    --sky: #60a5fa;
+    --cyan: #22d3ee;
+    --paper: #f5f6fb;
+    --paper-card: #ffffff;
+    --slate: #475569;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--paper);
+    color: var(--slate);
+}
+
+.font-display {
+    font-family: 'Sora', sans-serif;
+}
+
+/* Garis aksen warna, terinspirasi color bar registrasi cetak, tetap dalam keluarga biru */
+.colorbar {
+    height: 6px;
+    background: linear-gradient(90deg,
+        var(--ink) 0%, var(--ink) 25%,
+        var(--blue) 25%, var(--blue) 50%,
+        var(--sky) 50%, var(--sky) 75%,
+        var(--cyan) 75%, var(--cyan) 100%);
+}
+
+/* Pola titik halus, terinspirasi halftone cetak */
+.halftone {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+}
+
+/* Logo mark - tiga lingkaran bertumpuk ala registrasi warna cetak */
+.logo-mark {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    flex-shrink: 0;
+}
+.logo-mark span {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    mix-blend-mode: screen;
+}
+.logo-mark span:nth-child(1) { background: var(--sky); top: 0; left: 7px; }
+.logo-mark span:nth-child(2) { background: var(--cyan); bottom: 0; left: 0; }
+.logo-mark span:nth-child(3) { background: var(--blue); bottom: 0; right: 0; }
+
+.card {
+    background: var(--paper-card);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.card-accent {
+    border-left: 4px solid var(--blue);
+}
+
+.btn-primary {
+    background: var(--ink);
+    color: white;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    display: inline-block;
+    transition: background-color 0.15s ease;
+}
+.btn-primary:hover { background: var(--ink-2); }
+
+.btn-light {
+    background: white;
+    color: var(--ink);
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    padding: 0.65rem 1.5rem;
+    border-radius: 9999px;
+    display: inline-block;
+    transition: background-color 0.15s ease;
+}
+.btn-light:hover { background: #e2e8f0; }
+
+.btn-outline {
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    color: white;
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    padding: 0.6rem 1.4rem;
+    border-radius: 9999px;
+    display: inline-block;
+}
+.btn-outline:hover { border-color: white; }
