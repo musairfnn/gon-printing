@@ -2,7 +2,8 @@
 require_once 'includes/koneksi.php';
 include 'includes/header.php';
 
-$result = $koneksi->query("SELECT * FROM klien ORDER BY nama ASC");
+// Klien bernama diurutkan abjad, yang tanpa nama ditaruh paling akhir
+$result = $koneksi->query("SELECT * FROM klien ORDER BY (nama = '') ASC, nama ASC, id ASC");
 ?>
 
 <p class="font-display text-blue-600 text-sm font-semibold mb-1">Dipercaya oleh</p>
@@ -10,11 +11,14 @@ $result = $koneksi->query("SELECT * FROM klien ORDER BY nama ASC");
 
 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
     <?php while ($row = $result->fetch_assoc()): ?>
+        <?php $punyaNama = trim($row['nama']) !== ''; ?>
         <div class="card p-4 flex flex-col items-center justify-center text-center">
             <img src="assets/uploads/klien/<?= htmlspecialchars($row['logo']) ?>"
-                 alt="<?= htmlspecialchars($row['nama']) ?>"
-                 class="max-h-16 object-contain mb-2">
-            <p class="text-xs text-slate-600"><?= htmlspecialchars($row['nama']) ?></p>
+                 alt="<?= htmlspecialchars($punyaNama ? $row['nama'] : 'Logo klien') ?>"
+                 class="max-h-16 object-contain <?= $punyaNama ? 'mb-2' : '' ?>">
+            <?php if ($punyaNama): ?>
+                <p class="text-xs text-slate-600"><?= htmlspecialchars($row['nama']) ?></p>
+            <?php endif; ?>
         </div>
     <?php endwhile; ?>
 </div>

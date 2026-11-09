@@ -1,0 +1,7 @@
+node_modules/
+tmp_sessions/*
+!tmp_sessions/.htaccess
+!tmp_sessions/.gitkeep
+assets/uploads/*/*
+!assets/uploads/*/.gitkeep
+admin/setup_admin.php

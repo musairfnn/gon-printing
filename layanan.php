@@ -12,8 +12,10 @@ $result = $koneksi->query("SELECT * FROM layanan");
     <?php while ($row = $result->fetch_assoc()): ?>
         <div class="card card-accent p-6">
             <?php if ($row['gambar_mesin']): ?>
-                <img src="assets/uploads/layanan/<?= htmlspecialchars($row['gambar_mesin']) ?>"
-                     class="w-full h-48 object-cover rounded-lg mb-4">
+                <div class="bg-slate-50 rounded-lg mb-4">
+                    <img src="assets/uploads/layanan/<?= htmlspecialchars($row['gambar_mesin']) ?>"
+                         class="w-full h-48 object-contain rounded-lg">
+                </div>
             <?php endif; ?>
             <h2 class="font-display text-xl font-semibold text-[#0b1b3a]"><?= htmlspecialchars($row['nama']) ?></h2>
             <p class="text-sm text-slate-500 mb-2">Mesin: <?= htmlspecialchars($row['nama_mesin']) ?></p>

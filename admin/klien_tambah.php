@@ -5,7 +5,7 @@ require_once '../includes/koneksi.php';
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama = $_POST['nama'];
+    $nama = trim($_POST['nama'] ?? '');   // boleh kosong
 
     if (isset($_FILES['logo']) && $_FILES['logo']['error'] === 0) {
         $ext = pathinfo($_FILES['logo']['name'], PATHINFO_EXTENSION);
@@ -45,8 +45,8 @@ include 'includes/layout_atas.php';
 <?php endif; ?>
 
 <form method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow max-w-lg">
-    <label class="block mb-2 text-sm font-medium">Nama Klien</label>
-    <input type="text" name="nama" class="w-full border rounded px-3 py-2 mb-4" required>
+    <label class="block mb-2 text-sm font-medium">Nama Klien (opsional)</label>
+    <input type="text" name="nama" maxlength="100" class="w-full border rounded px-3 py-2 mb-4">
 
     <label class="block mb-2 text-sm font-medium">Logo</label>
     <input type="file" name="logo" accept="image/*" class="w-full border rounded px-3 py-2 mb-6" required>

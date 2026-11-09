@@ -6,7 +6,7 @@
 <title><?= $judul ?? 'Admin' ?> - GON Printing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/css/tailwind.css">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body class="bg-slate-50 flex min-h-screen">
@@ -25,8 +25,8 @@
     </button>
 </div>
 
-<aside id="sidebar" class="w-64 bg-[#0b1b3a] text-white flex flex-col shrink-0 h-screen overflow-y-auto
-    fixed md:sticky top-0 left-0 z-30 -translate-x-full md:translate-x-0 transition-transform duration-200">
+<aside id="sidebar" class="w-64 bg-[#0b1b3a] text-white flex flex-col shrink-0 overflow-y-auto
+    fixed md:sticky top-0 left-0 z-30 -translate-x-full md:translate-x-0 transition-transform duration-200 h-[100dvh]">
     <div class="px-6 py-5 border-b border-blue-900 flex items-center gap-3">
         <img src="../assets/img/logo.png" alt="GON Printing" class="h-8 w-auto">
         <div>
@@ -55,6 +55,10 @@
         <a href="profil.php"
            class="block px-4 py-2 rounded hover:bg-[#14285c] <?= ($aktif ?? '') === 'profil' ? 'bg-[#14285c]' : '' ?>">
             Kelola Profil
+        </a>
+        <a href="akun.php"
+           class="block px-4 py-2 rounded hover:bg-[#14285c] <?= ($aktif ?? '') === 'akun' ? 'bg-[#14285c]' : '' ?>">
+            Pengaturan Akun
         </a>
     </nav>
 

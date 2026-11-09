@@ -14,8 +14,8 @@ $result = $koneksi->query("SELECT * FROM portofolio ORDER BY id DESC");
         <div class="card overflow-hidden">
             <img src="assets/uploads/portofolio/<?= htmlspecialchars($row['gambar']) ?>"
                  class="w-full aspect-square object-cover">
-            <?php if ($row['keterangan']): ?>
-                <p class="p-2 text-xs text-slate-600"><?= htmlspecialchars($row['keterangan']) ?></p>
+            <?php if (trim($row['keterangan'] ?? '') !== ''): ?>
+                <p class="p-3 text-sm md:text-base font-medium text-[#0b1b3a] text-center"><?= htmlspecialchars($row['keterangan']) ?></p>
             <?php endif; ?>
         </div>
     <?php endwhile; ?>

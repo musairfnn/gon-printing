@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/includes/session_init.php';
 require_once '../includes/koneksi.php';
 
 $error = "";
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 <meta charset="UTF-8">
 <title>Login Admin - GON Printing</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../assets/css/tailwind.css">
 </head>
 <body class="bg-slate-100 flex items-center justify-center min-h-screen">
 <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">

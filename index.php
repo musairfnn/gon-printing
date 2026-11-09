@@ -16,7 +16,7 @@ $portofolio = $koneksi->query("SELECT * FROM portofolio ORDER BY id DESC LIMIT 4
     <div class="relative max-w-6xl mx-auto px-6 py-8 md:py-16">
         <div class="max-w-2xl">
             <p class="font-display text-sky-300 text-xs md:text-sm font-semibold tracking-wide mb-2 md:mb-3">
-                Percetakan Digital &amp; Advertising 
+                Percetakan Digital &amp; Advertising &middot; Tangerang
             </p>
             <h1 class="font-display text-2xl md:text-5xl font-extrabold leading-tight mb-3 md:mb-5">
                 Cetak yang selesai tepat waktu, setiap waktu.
@@ -45,18 +45,20 @@ $portofolio = $koneksi->query("SELECT * FROM portofolio ORDER BY id DESC LIMIT 4
         </a>
     </div>
     <div class="grid grid-cols-4 gap-2 md:gap-5">
-    <?php while ($row = $layanan->fetch_assoc()): ?>
-        <div class="card border-l-2 md:border-l-4 border-blue-600 p-2 md:p-5">
-            <?php if ($row['gambar_mesin']): ?>
-                <img src="assets/uploads/layanan/<?= htmlspecialchars($row['gambar_mesin']) ?>"
-                     class="w-full h-12 md:h-28 object-cover rounded-md md:rounded-lg mb-2 md:mb-4">
-            <?php endif; ?>
-            <h3 class="font-display font-semibold text-[#0b1b3a] text-[10px] leading-tight md:text-base">
-                <?= htmlspecialchars($row['nama']) ?>
-            </h3>
-        </div>
-    <?php endwhile; ?>
-</div>
+        <?php while ($row = $layanan->fetch_assoc()): ?>
+            <div class="card border-l-2 md:border-l-4 border-blue-600 p-2 md:p-5">
+                <?php if ($row['gambar_mesin']): ?>
+                    <div class="zoom-wrap bg-slate-50 rounded-md md:rounded-lg mb-2 md:mb-4">
+                        <img src="assets/uploads/layanan/<?= htmlspecialchars($row['gambar_mesin']) ?>"
+                             class="zoom-img w-full h-12 md:h-28 object-contain">
+                    </div>
+                <?php endif; ?>
+                <h3 class="font-display font-semibold text-[#0b1b3a] text-[10px] leading-tight md:text-base">
+                    <?= htmlspecialchars($row['nama']) ?>
+                </h3>
+            </div>
+        <?php endwhile; ?>
+    </div>
 </div>
 
 <!-- Portofolio Preview -->
@@ -73,8 +75,15 @@ $portofolio = $koneksi->query("SELECT * FROM portofolio ORDER BY id DESC LIMIT 4
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <?php while ($row = $portofolio->fetch_assoc()): ?>
-            <img src="assets/uploads/portofolio/<?= htmlspecialchars($row['gambar']) ?>"
-                 class="w-full aspect-square object-cover rounded-xl card">
+            <div class="card overflow-hidden">
+                <div class="zoom-wrap">
+                    <img src="assets/uploads/portofolio/<?= htmlspecialchars($row['gambar']) ?>"
+                         class="zoom-img w-full aspect-square object-cover">
+                </div>
+                <?php if (trim($row['keterangan'] ?? '') !== ''): ?>
+                    <p class="p-3 text-sm md:text-base font-medium text-[#0b1b3a] text-center"><?= htmlspecialchars($row['keterangan']) ?></p>
+                <?php endif; ?>
+            </div>
         <?php endwhile; ?>
     </div>
 </div>
